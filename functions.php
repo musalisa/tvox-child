@@ -111,4 +111,50 @@ function tvox_child_scripts() {
 	wp_enqueue_script( 'tvox', get_stylesheet_directory_uri(). '/includes/js/tvox.js', array('jquery'));
 }
 
+/*-----------------------------------------------------------------------------------*/
+/**
+ * sva_archive_children()
+ *
+ * Mostra i figli dell'archive se ci sono senza un ordinamento.
+ *
+ * @since V1.0.0
+ * @uses do_atomic(), get_queried_object(), get_term_children()
+ * @echo string
+ */
+/*-----------------------------------------------------------------------------------*/
+
+if ( ! function_exists( 'sva_archive_children' ) ) {
+	function sva_archive_children ( $echo = true ) {
+		do_action( 'sva_archive_children' );
+
+		// Archive children, if available.
+
+		$term_obj = get_queried_object();
+
+		$children_list = '';
+		$termchildren = array();
+
+		if ( isset( $term_obj->term_id ) && isset( $term_obj->taxonomy ) ) {
+			$termchildren = get_terms( $term_obj->taxonomy, array( 'child_of' => $term_obj->term_id, 'parent' => $term_obj->term_id ) );
+		}
+
+		if ( count( $termchildren ) > 0 ) {
+			$children_list = '<ul>';
+			foreach ( $termchildren as $child ) {
+				$children_list = $children_list . '<li><a href="' . get_term_link( $child, $term_obj->taxonomy ) . '">' . $child->name . '</a></li>';
+			}
+			$children_list = $children_list . '</ul>';
+		}
+		if ( isset( $children_list ) && '' != $children_list ) {
+			// Allow child themes/plugins to filter here ( 1: text in DIV and paragraph, 2: term object )
+			$children_list = apply_filters( 'sva_archive_children', '<div class="archive-children">' . $children_list . '</div><!--/.archive-description-->', $term_obj );
+		}
+
+		if ( $echo != true ) { return $children_list; }
+
+		echo $children_list;
+	} // End sva_archive_children()
+}
+
+
 ?>

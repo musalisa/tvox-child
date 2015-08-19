@@ -16,8 +16,13 @@ global $buddydrive_template;
 $buddydrive_template = new  Tvox_BD_Library();
 $buddydrive_template->get_by_term( $term->term_id );
 
+$title_before = '<h1 class="archive_header">';
+$title_after = '</h1>';
+woo_loop_before();
+woo_archive_title( $title_before, $title_after );
+woo_archive_description();
+sva_archive_children();
 ?>
-<h1 class="title entry-title"><?php echo $term->name; ?></h1>
 
 <?php if ( $buddydrive_template->query->have_posts() ): ?>
 
