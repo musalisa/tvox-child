@@ -1,39 +1,25 @@
 /*
- Theme Name:   Canvas Tvox Child
- Template:     canvas
- Author:       Stefania Belloni
- Version:      0.0.1
-*/
+ Theme Name:   Canvas Child
+  Template:     canvas
+   Author:       Stefania Belloni
+    Version:      0.0.1
+    */
 
-@import url("../canvas/style.css");
+    @import url("../canvas/style.css");
 
-/* =Theme customization starts here
--------------------------------------------------------------- */
-b { font-weight: bold; }
-#post-author .profile-image img { border-radius: 0px; }
-div.sva-sc-factbox { display: block; font-size: 0.9em; background-color: #f8f8f8; padding: 6px;}
-div.sva-sc-factbox.right { float: right; margin-left: 8px; }
-div.sva-sc-factbox.left { float: left; margin-right: 8px; }
-div.sva-sc-factbox p { font-size: 0.9em }
-div.sva-sc-intro { font-size: 0.9em; font-style: italic;}
-/* dimensione colonne */
-@media only screen and (min-width: 768px) {
-body.three-col-middle-960 #main-sidebar-container {
-    width: 82.92%;
-}
-body.three-col-middle-960 #sidebar-alt {
-    width: 13.85%;
-}
-body.three-col-middle-960 #main-sidebar-container #sidebar {
-    width: 15.4969%;
-}
-body.three-col-middle-960 #main-sidebar-container #main {
-    width: 80.6199%;
-}
-}
+    /* =Theme customization starts here
+    -------------------------------------------------------------- */
+    b { font-weight: bold; }
+    #post-author .profile-image img { border-radius: 0px; }
+    div.sva-sc-factbox { display: block; font-size: 0.9em; background-color: #f8f8f8; padding: 6px;}
+    div.sva-sc-factbox.right { float: right; margin-left: 8px; }
+    div.sva-sc-factbox.left { float: left; margin-right: 8px; }
+    div.sva-sc-factbox p { font-size: 0.9em }
+    div.sva-sc-intro { font-size: 0.9em; font-style: italic;}
 
-#buddydrive-custom-step-edit.hide { display: inherit;}
-/* #buddydrive-custom-step-new.hide { display: inherit;} */
+    #buddydrive-custom-step-edit.hide { display: inherit;}
+    /* #buddydrive-custom-step-new.hide { display: inherit;} */
+    
     .widget ul { list-style: none; margin-left: 0; padding-left: 0; }
 
     div.widget>div>ul, div.widget>ul, div.widget>div>form, div.widget>form, div.widget>div>div {
@@ -46,8 +32,9 @@ body.three-col-middle-960 #main-sidebar-container #main {
 		padding: 2px 0 1px 0;
 		text-align: center;
 		background-image: url('./includes/images/sfum.gif');
-		background-color: #cfcfcf;
+		background-color: #7f7f7f;
 	}
+	
 	.archive-children {
     border-bottom: 1px solid #e6e6e6;
     display: block;
@@ -63,3 +50,18 @@ body.three-col-middle-960 #main-sidebar-container #main {
     margin: 0 10px 0 0;
     border: 1px solid #e6e6e6;
 	}
+
+@media only screen and (max-width: 979px) {
+.breadcrumb {
+    margin-left: 100px;
+}
+}
+
+@media only screen and (max-width: 767px) {
+.breadcrumb {
+    margin-left: 0px;
+    margin-top: 35px;
+}
+}
+
+    
