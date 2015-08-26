@@ -44,18 +44,19 @@
 	</header>
 <?php
 	woo_post_meta();
-	if ( isset( $woo_options['woo_magazine_featured_post_content'] ) &&  has_post_thumbnail() ) {
-		?> 
-			<a href="<?php echo get_permalink(); ?>"><?php woo_image( 'link=img&width='.$woo_options['woo_magazine_f_w'].'&height='.$woo_options['woo_magazine_f_h'].'&class=thumbnail '.$woo_options['woo_magazine_f_align'] ); ?></a>
-		<?php
-		}
 ?>
 	<section class="entry">
 	    <?php
-	    	if ( isset( $woo_options['woo_magazine_featured_post_content'] ) && has_excerpt() ) {
-	    		the_excerpt();    		
-	    	} else {
-	    		the_content( '', TRUE );
+	    	if ( isset( $woo_options['woo_magazine_featured_post_content'] ) ) {
+	    		if ( has_excerpt() )  {
+			?> 
+				<a href="<?php echo get_permalink(); ?>"><?php woo_image( 'link=img&width='.$woo_options['woo_magazine_f_w'].'&height='.$woo_options['woo_magazine_f_h'].'&class=thumbnail '.$woo_options['woo_magazine_f_align'] ); ?></a>
+			<?php	    		
+	    		the_excerpt();
+	    		}
+	    		else {
+	    			the_content( '', TRUE );
+	    		}
 	    	}
 	    ?>
 	</section><!-- /.entry -->
