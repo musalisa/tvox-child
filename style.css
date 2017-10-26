@@ -1,11 +1,58 @@
 /*
- Theme Name:   Canvas Tvox Child
-  Template:     canvas
+ Theme Name:   Storefront Tvox Child
+  Template:     storefront
    Author:       Stefania Belloni
     Version:      0.0.1
     */
 
-    @import url("../canvas/style.css");
+    @import url("../storefront/style.css");
+
+    /* canvas css dell'amministrazione --------------------- */
+    header#header { font-size: 0.9em; margin-top: 0px; margin-bottom: 0px;padding-top: 0px;padding-bottom: 0px; background-size:760px 122px;}
+.entry img, img.thumbnail { border: 0px; padding: 0px;}
+.entry .wp-caption  { background: #ffffff;border: 0px }
+.entry .wp-caption-text {font-style: italic}
+#logo {display: none;}
+#tvox-logo-td, #tvox-pulsantiera-td {height: 182px; vertical-align: top;}
+#tvox-logo-td {width: 82px;}
+div#tvox-logo-div {float:left; width:81px;}
+div#tvox-logo1-div,  div#tvox-logo2-div {width:228px;}
+div#tvox-logo1-div {margin-top: 47px;}
+#tvox-com-td {vertical-align: top;}
+#tvox-pulsantiera-tb {width: 100%;margin-top:20px;}
+#tvox-pulsantiera-tb div.tvox-puls {width: 110px; float:right;}
+#tvox-pulsantiera-td {text-align: right;}
+#tvox-header-tb {width: 100%; border: none}
+#tvox-header-tb img{resize: none}
+#tvox-header-tb  td { border: none}
+/*#content.col-full { z-index: -500;} */
+div#header-container { margin-bottom: -50px; background-size:760px 122px;}
+aside#sidebar-alt  { margin-top: 50px}
+.adspace-widget {resize: none;}
+@media only screen and (min-width: 768px) {
+#nav-container {display: none;}
+}
+@media only screen and (max-width: 767px) {
+#tvox-pulsantiera-tb {display: none;}
+}
+/* layout 3 colonne */
+
+@media only screen and (min-width: 980px) {
+body.three-col-middle-1160 #main-sidebar-container {
+    width: 87.0690%;
+}
+body.three-col-middle-1160 #sidebar-alt {
+    width: 10.3448%;
+}
+body.three-col-middle-1160 #main-sidebar-container #sidebar {
+    width: 29.7030%;
+}
+body.three-col-middle-1160 #main-sidebar-container #main {
+    width: 67.3267%;
+}
+}
+
+/* fine layout 3 colonne */
 
     /* =Theme customization starts here
     -------------------------------------------------------------- */
@@ -19,7 +66,7 @@
 
     #buddydrive-custom-step-edit.hide { display: inherit;}
     /* #buddydrive-custom-step-new.hide { display: inherit;} */
-    
+
     .widget ul { list-style: none; margin-left: 0; padding-left: 0; }
 
     div.widget>div>ul, div.widget>ul, div.widget>div>form, div.widget>form, div.widget>div>div {
@@ -34,7 +81,7 @@
 		background-image: url('./includes/images/sfum.gif');
 		background-color: #7f7f7f;
 	}
-	
+
 	.archive-children {
     border-bottom: 1px solid #e6e6e6;
     display: block;
@@ -43,7 +90,7 @@
     padding: 0 0 10px;
     width: 100%;
 	}
-	
+
 	.archive-children li {
     float: left;
     padding: 10px;
@@ -63,5 +110,3 @@
     margin-top: 35px;
 }
 }
-
-    

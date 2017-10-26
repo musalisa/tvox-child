@@ -50,10 +50,10 @@ function sva_shortcode_intro( $atts, $content = null ) {
 
 add_shortcode( 'intro', 'sva_shortcode_intro' );
 /*-----------------------------------------------------------------------------------*/
-/* Header TVOX 
+/* Header TVOX
 /*-----------------------------------------------------------------------------------*/
 
-add_action( 'woo_header_inside', 'tvox_header_table' );
+add_action( 'storefront_header', 'tvox_header_table' );
 function tvox_header_table(){
 	get_template_part('templates/tvox_header_table');
 }
@@ -65,7 +65,7 @@ function woo_custom_use_yoast_breadcrumbs ( $breadcrumbs ) {
 if ( function_exists( 'yoast_breadcrumb' ) ) {
 $before = '<div class="breadcrumb breadcrumbs woo-breadcrumbs"><div class="breadcrumb-trail">';
 $after = '</div></div>';
-$breadcrumbs = yoast_breadcrumb( $before, $after, false ); 
+$breadcrumbs = yoast_breadcrumb( $before, $after, false );
 }
 return $breadcrumbs;
 } // End woo_custom_use_yoast_breadcrumbs()
@@ -75,16 +75,16 @@ return $breadcrumbs;
 /* POOTLE PRESS FUNCTIONS */
 /*------------------------------------------------------------------------------------*/
 add_filter( 'template_include', 'woo_custom_maybe_load_bbpress_tpl', 99 );
- 
+
 function woo_custom_maybe_load_bbpress_tpl ( $tpl ) {
 	if ( function_exists( 'is_bbpress' ) && is_bbpress() ) {
 		$tpl = locate_template( 'bbpress.php' );
 	}
 	return $tpl;
 } // End woo_custom_maybe_load_bbpress_tpl()
- 
+
 add_filter( 'bbp_get_template_stack', 'woo_custom_deregister_bbpress_template_stack' );
- 
+
 function woo_custom_deregister_bbpress_template_stack ( $stack ) {
 	if ( 0 < count( $stack ) ) {
 		$stylesheet_dir = get_stylesheet_directory();
