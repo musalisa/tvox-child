@@ -3,6 +3,19 @@
 // File Security Check
 if ( ! defined( 'ABSPATH' ) ) exit;
 
+/*
+function my_theme_enqueue_styles() {
+    $parent_style = 'storefront'; // This is 'twentyfifteen-style' for the Twenty Fifteen theme.
+
+    wp_enqueue_style( $parent_style, get_template_directory_uri() . '/style.css' );
+    wp_enqueue_style( 'tvox-child',
+        get_stylesheet_directory_uri() . '/style.css',
+        array( $parent_style ),
+        wp_get_theme()->get('Version')
+    );
+}
+add_action( 'wp_enqueue_scripts', 'my_theme_enqueue_styles' );
+*/
 
 /*-----------------------------------------------------------------------------------*/
 /* Fact Boxes - box
@@ -15,22 +28,6 @@ Optional arguments:
  - style: da definire
 
 */
-function sva_shortcode_factbox( $atts, $content = null ) {
-   extract( shortcode_atts( array(      'align' => 'right',
-                                                                        'width' => '',
-                                                                        'style' => ''
-                                                                        ), $atts ) );
-
-        $custom = '';
-        if ( $width )
-                $custom = ' style="width:'.$width.'px;"';
-        else
-                $custom = ' style="width:300px;"';
-
-        return '<div class="sva-sc-factbox ' . esc_attr( $align ) . ' ' . esc_attr( $style ) . '"' . $custom . '>' . wp_kses_post( do_shortcode( woo_remove_wpautop( $content ) ) ) . '</div>';
-} // End sva_shortcode_factbox()
-
-add_shortcode( 'factbox', 'sva_shortcode_factbox' );
 
 /*-----------------------------------------------------------------------------------*/
 /* Intro - div
@@ -41,14 +38,6 @@ Optional arguments:
 - style
 
 */
-function sva_shortcode_intro( $atts, $content = null ) {
-   extract( shortcode_atts( array(      'style' => ''
-                                                                        ), $atts ) );
-
-        return '<div class="sva-sc-intro ' . esc_attr( $style ) . '"' .'>' . wp_kses_post( do_shortcode( woo_remove_wpautop( $content ) ) ) . '</div>';
-} // End sva_shortcode_intro()
-
-add_shortcode( 'intro', 'sva_shortcode_intro' );
 /*-----------------------------------------------------------------------------------*/
 /* Header TVOX
 /*-----------------------------------------------------------------------------------*/
