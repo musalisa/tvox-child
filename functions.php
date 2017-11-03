@@ -28,14 +28,24 @@ Optional arguments:
 /*-----------------------------------------------------------------------------------*/
 /* Header TVOX
 /*-----------------------------------------------------------------------------------*/
-/*
-add_action( 'storefront_header', 'tvox_header_table' );
+
+add_action( 'storefront_header_before', 'tvox_header_table' );
 function tvox_header_table(){
 	get_template_part('templates/tvox_header_table');
 }
-*/
+
+function remove_sf_actions() {
+
+	//remove_action( 'storefront_header', 'storefront_product_search', 40 );
+	remove_action( 'storefront_header', 'storefront_primary_navigation', 50 );
+	remove_action( 'storefront_header', 'storefront_header_cart', 60 );
+
+}
+add_action( 'init', 'remove_sf_actions' );
+
 /*-----------------------------------------------------------------------------------*/
 // Both woo_breadcrumbs() and Yoast breadcrumbs need to be enabled in the WordPress admin for this to function.
+/*
 add_filter( 'woo_breadcrumbs', 'woo_custom_use_yoast_breadcrumbs' );
 function woo_custom_use_yoast_breadcrumbs ( $breadcrumbs ) {
 if ( function_exists( 'yoast_breadcrumb' ) ) {
@@ -44,7 +54,8 @@ $after = '</div></div>';
 $breadcrumbs = yoast_breadcrumb( $before, $after, false );
 }
 return $breadcrumbs;
-} // End woo_custom_use_yoast_breadcrumbs()
+}
+*/ // End woo_custom_use_yoast_breadcrumbs()
 
 
 /*------------------------------------------------------------------------------------*/

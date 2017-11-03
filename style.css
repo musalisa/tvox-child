@@ -52,6 +52,19 @@ body.three-col-middle-1160 #main-sidebar-container #main {
 }
 }
 */
+
+#masthead.site-header { background-repeat: repeat-x; background-position: top; padding-top:0; border-bottom: 3px; }
+.woocommerce-active .site-branding {;
+}
+
+@media (min-width: 768px){}
+.woocommerce-breadcrumb {
+    padding: 0.5em 20em 0.5em;
+    margin-left: -20em;
+    margin-right: 0em;
+    margin-bottom: 0;
+}
+}
 /* fine layout 3 colonne */
 
     /* =Theme customization starts here
