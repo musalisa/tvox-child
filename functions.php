@@ -37,8 +37,8 @@ function tvox_header_table(){
 function remove_sf_actions() {
 
 	//remove_action( 'storefront_header', 'storefront_product_search', 40 );
-	//remove_action( 'storefront_header', 'storefront_primary_navigation', 50 );
-	//remove_action( 'storefront_header', 'storefront_header_cart', 60 );
+	remove_action( 'storefront_header', 'storefront_primary_navigation', 50 );
+	remove_action( 'storefront_header', 'storefront_header_cart', 60 );
 
 }
 add_action( 'init', 'remove_sf_actions' );
