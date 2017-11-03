@@ -61,6 +61,7 @@ return $breadcrumbs;
 /*------------------------------------------------------------------------------------*/
 /* POOTLE PRESS FUNCTIONS */
 /*------------------------------------------------------------------------------------*/
+/*
 add_filter( 'template_include', 'woo_custom_maybe_load_bbpress_tpl', 99 );
 
 function woo_custom_maybe_load_bbpress_tpl ( $tpl ) {
@@ -83,7 +84,9 @@ function woo_custom_deregister_bbpress_template_stack ( $stack ) {
 		}
 	}
 	return $stack;
-} // End woo_custom_deregister_bbpress_template_stack()
+}
+*/
+// End woo_custom_deregister_bbpress_template_stack()
 
 
 /*------------------------------------------------------------------------------------*/
