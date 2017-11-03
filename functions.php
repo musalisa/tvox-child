@@ -28,12 +28,12 @@ Optional arguments:
 /*-----------------------------------------------------------------------------------*/
 /* Header TVOX
 /*-----------------------------------------------------------------------------------*/
-
+/*
 add_action( 'storefront_header', 'tvox_header_table' );
 function tvox_header_table(){
 	get_template_part('templates/tvox_header_table');
 }
-
+*/
 /*-----------------------------------------------------------------------------------*/
 // Both woo_breadcrumbs() and Yoast breadcrumbs need to be enabled in the WordPress admin for this to function.
 add_filter( 'woo_breadcrumbs', 'woo_custom_use_yoast_breadcrumbs' );

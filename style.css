@@ -6,8 +6,7 @@
     */
 
 
-    /* canvas css dell'amministrazione --------------------- */
-    header#header { font-size: 0.9em; margin-top: 0px; margin-bottom: 0px;padding-top: 0px;padding-bottom: 0px; background-size:760px 122px;}
+header#header { font-size: 0.9em; margin-top: 0px; margin-bottom: 0px;padding-top: 0px;padding-bottom: 0px; background-size:760px 122px;}
 .entry img, img.thumbnail { border: 0px; padding: 0px;}
 .entry .wp-caption  { background: #ffffff;border: 0px }
 .entry .wp-caption-text {font-style: italic}
@@ -28,14 +27,16 @@ div#tvox-logo1-div {margin-top: 47px;}
 div#header-container { margin-bottom: -50px; background-size:760px 122px;}
 aside#sidebar-alt  { margin-top: 50px}
 .adspace-widget {resize: none;}
+
 @media only screen and (min-width: 768px) {
 #nav-container {display: none;}
 }
 @media only screen and (max-width: 767px) {
 #tvox-pulsantiera-tb {display: none;}
 }
-/* layout 3 colonne */
 
+/* layout 3 colonne */
+/*
 @media only screen and (min-width: 980px) {
 body.three-col-middle-1160 #main-sidebar-container {
     width: 87.0690%;
@@ -50,7 +51,7 @@ body.three-col-middle-1160 #main-sidebar-container #main {
     width: 67.3267%;
 }
 }
-
+*/
 /* fine layout 3 colonne */
 
     /* =Theme customization starts here
