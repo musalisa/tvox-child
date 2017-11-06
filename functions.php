@@ -42,6 +42,16 @@ Optional arguments:
 - style
 
 */
+
+function sva_shortcode_intro( $atts, $content = null ) {
+   extract( shortcode_atts( array(      'style' => ''
+                                                                        ), $atts ) );
+
+        return '<div class="sva-sc-intro ' . esc_attr( $style ) . '"' .'>' . wp_kses_post( do_shortcode( wpautop( $content ) ) ) . '</div>';
+}
+add_shortcode( 'intro', 'sva_shortcode_intro' );
+// End sva_shortcode_intro()
+
 /*-----------------------------------------------------------------------------------*/
 /* Header TVOX
 /*-----------------------------------------------------------------------------------*/
