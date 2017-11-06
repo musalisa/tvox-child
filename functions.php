@@ -15,6 +15,23 @@ Optional arguments:
  - style: da definire
 
 */
+function sva_shortcode_factbox( $atts, $content = null ) {
+   extract( shortcode_atts( array(      'align' => 'right',
+                                                                        'width' => '',
+                                                                        'style' => ''
+                                                                        ), $atts ) );
+
+        $custom = '';
+        if ( $width )
+                $custom = ' style="width:'.$width.'px;"';
+        else
+                $custom = ' style="width:300px;"';
+
+        return '<div class="sva-sc-factbox ' . esc_attr( $align ) . ' ' . esc_attr( $style ) . '"' . $custom . '>' . wp_kses_post( do_shortcode(  wpautop( $content) ) ) . '</div>';
+} // End sva_shortcode_factbox()
+
+add_shortcode( 'factbox', 'sva_shortcode_factbox' );
+
 
 /*-----------------------------------------------------------------------------------*/
 /* Intro - div
