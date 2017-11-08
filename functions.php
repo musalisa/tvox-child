@@ -3,17 +3,56 @@
 // File Security Check
 if ( ! defined( 'ABSPATH' ) ) exit;
 
+/*----------------------------------------------------------------------------------*/
+/* TVOX Theme setup
+/*-----------------------------------------------------------------------------------*/
+
+function tvox_setup() {
+
+  // load_theme_textdomain( 'twentyseventeen' );
+
+  add_theme_support( 'post-formats', array(
+		'aside',
+		'image',
+		'video',
+		'quote',
+		'link',
+		'gallery',
+		'audio',
+	) );
+  //add_theme_support( 'post-thumbnails' );
+	//add_image_size( 'tvox-featured-image', 2000, 1200, true );
+	//add_image_size( 'tvox-thumbnail-avatar', 100, 100, true );
+}
+add_action( 'after_setup_theme', 'tvox_setup' );
+
+/*****************************************************************************************
+ /* customizzazioni Storefront */
+/*****************************************************************************************/
+//require 'inc/tvox-functions.php';
+//require 'inc/tvox-template-hooks.php';
+//require 'inc/template-template-functions.php';
+function remove_sf_actions() {
+    
+    //remove_action( 'storefront_header', 'storefront_product_search', 40 );
+    remove_action( 'storefront_header', 'storefront_primary_navigation', 50 );
+    remove_action( 'storefront_header', 'storefront_header_cart', 60 );
+    //remove_action( 'storefront_single_post', 'storefront_post_meta', 20);
+    //remove_action( 'storefront_loop_post', 'storefront_post_meta', 20);
+    
+}
+add_action( 'init', 'remove_sf_actions' );
 
 /*-----------------------------------------------------------------------------------*/
-/* Fact Boxes - box
+/* Tvox Shorcodes
 /*-----------------------------------------------------------------------------------*/
+
 /*
-
+ Factbox
 Optional arguments:
  - align: left, right
  - width: n° di pixel senza px
  - style: da definire
-
 */
 function sva_shortcode_factbox( $atts, $content = null ) {
    extract( shortcode_atts( array(      'align' => 'right',
@@ -33,16 +72,12 @@ function sva_shortcode_factbox( $atts, $content = null ) {
 add_shortcode( 'factbox', 'sva_shortcode_factbox' );
 
 
-/*-----------------------------------------------------------------------------------*/
-/* Intro - div
-/*-----------------------------------------------------------------------------------*/
 /*
-
+Intro - div
 Optional arguments:
 - style
 
 */
-
 function sva_shortcode_intro( $atts, $content = null ) {
    extract( shortcode_atts( array(      'style' => ''
                                                                         ), $atts ) );
@@ -51,6 +86,7 @@ function sva_shortcode_intro( $atts, $content = null ) {
 }
 add_shortcode( 'intro', 'sva_shortcode_intro' );
 // End sva_shortcode_intro()
+
 
 /*-----------------------------------------------------------------------------------*/
 /* Header TVOX
@@ -61,14 +97,7 @@ function tvox_header_table(){
 	get_template_part('templates/tvox_header_table');
 }
 
-function remove_sf_actions() {
 
-	//remove_action( 'storefront_header', 'storefront_product_search', 40 );
-	remove_action( 'storefront_header', 'storefront_primary_navigation', 50 );
-	remove_action( 'storefront_header', 'storefront_header_cart', 60 );
-
-}
-add_action( 'init', 'remove_sf_actions' );
 
 /*-----------------------------------------------------------------------------------*/
 // Both woo_breadcrumbs() and Yoast breadcrumbs need to be enabled in the WordPress admin for this to function.
@@ -172,6 +201,5 @@ if ( ! function_exists( 'sva_archive_children' ) ) {
 		echo $children_list;
 	} // End sva_archive_children()
 }
-
 
 ?>

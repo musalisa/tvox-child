@@ -5,6 +5,26 @@
     Version:      0.0.1
     */
 
+/* Storefront customization starts here */
+.hentry.type-post .entry-content {
+    width: 100%;
+    /*float: right;
+    margin-right: 0;*/
+}
+.hentry.type-post .entry-meta {
+    width: 100%;
+    float: none;
+    margin-right: 0;
+    font-size: .875em;
+    display: block;
+}
+.hentry.type-post .entry-meta div {
+    float: left;
+    white-space: nowrap;
+    margin-right: 1em;  
+}
+
+/* Storefront customization end */
 
 header#header { font-size: 0.9em; margin-top: 0px; margin-bottom: 0px;padding-top: 0px;padding-bottom: 0px; background-size:760px 122px;}
 .entry img, img.thumbnail { border: 0px; padding: 0px;}
