@@ -31,17 +31,20 @@ add_action( 'after_setup_theme', 'tvox_setup' );
 /*****************************************************************************************/
 //require 'inc/tvox-functions.php';
 //require 'inc/tvox-template-hooks.php';
-//require 'inc/template-template-functions.php';
-function remove_sf_actions() {
+require 'includes/tvox-template-functions.php';
+function replace_storefront_actions() {
     
     //remove_action( 'storefront_header', 'storefront_product_search', 40 );
     remove_action( 'storefront_header', 'storefront_primary_navigation', 50 );
     remove_action( 'storefront_header', 'storefront_header_cart', 60 );
-    //remove_action( 'storefront_single_post', 'storefront_post_meta', 20);
+    // rifaccio l'header dell'articolo single
+    remove_action( 'storefront_single_post', 'storefront_post_header', 10);
+    remove_action( 'storefront_single_post', 'storefront_post_meta', 20);
+    add_action( 'storefront_single_post', 'tvox_post_title_header', 10);
     //remove_action( 'storefront_loop_post', 'storefront_post_meta', 20);
     
 }
-add_action( 'init', 'remove_sf_actions' );
+add_action( 'init', 'replace_storefront_actions' );
 
 /*-----------------------------------------------------------------------------------*/
 /* Tvox Shorcodes
