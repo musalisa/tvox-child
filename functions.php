@@ -205,4 +205,40 @@ if ( ! function_exists( 'sva_archive_children' ) ) {
 	} // End sva_archive_children()
 }
 
+
+/*-----------------------------------------------------------------------------------*/
+/* Construct the query arguments for the "Home Page */
+/*-----------------------------------------------------------------------------------*/
+
+if ( ! function_exists( 'tvox_get_home_query_args' ) ) {
+    /**
+     * Construct an array of arguments for use in the query for the "Magazine" grid.
+     * @return array Constructed array of arguments.
+     */
+    function tvox_get_home_query_args () {
+        // Exclude stored duplicates
+        $exclude = '';
+        $cats = array();
+        $cats_exclude = array();
+        
+        // Exclude slider posts
+        /*if ( $woo_options['woo_slider_magazine_exclude'] == 'true' ) {
+            $exclude = get_option( 'woo_exclude' );*/
+         
+        $args = array(
+            'post_type' => 'post'
+        );
+        
+        if ( $paged > 1 ) {
+            $args['paged'] = $paged;
+        }
+        
+        if ( $exclude != '' ) {
+            $args['post__not_in'] = $exclude;
+        }
+        
+        return $args;
+    } // End woo_get_magazine_query_args()
+}
+
 ?>
