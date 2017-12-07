@@ -9,7 +9,6 @@
  */
 
 get_header(); ?>
-
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main tvox" role="main">
 
@@ -29,11 +28,10 @@ get_header(); ?>
 			endwhile; // End of the loop. ?>
 
 		</main><!-- #main -->
-	</div><!-- #primary -->
+	</div>!-- #primary -->
 
 <?php
 do_action( 'storefront_sidebar' );
 get_footer();
 
 //Oswald",arial,sans-serif
-

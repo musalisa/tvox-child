@@ -107,3 +107,54 @@
 	        ) );
 	    }
 	}
+	
+	function tvox_close_grid_container() {
+	    ?>
+    </div><!--  #tvox-layout-grid -->
+	<?php
+}
+add_action( 'storefront_after_footer', 'tvox_close_grid_container' );
+
+function tvox_sx_grid_area() {
+    ?>
+    <div id="tvox-gambe-grid-area">gambe</div>
+    <div id="tvox-sx-grid-area">sx</div>
+	<?php
+}
+add_action( 'storefront_before_content', 'tvox_sx_grid_area' );
+
+function storefront_site_branding() {
+    ?>
+	<div id="tvox-site-branding">
+		<?php storefront_site_title_or_logo(); ?>
+		<a href="https://wpdev.sva.net/" class="tvox-com" rel="home" itemprop="url"><img src="/wp-content/themes/tvox-child/includes/images/thereminvox_com.gif"></a>
+		<a href="https://wpdev.sva.net/" class="tvox-claim" rel="home" itemprop="url"><img src="/wp-content/themes/tvox-child/includes/images/claim.gif"></a>
+	</div>
+	<?php
+}
+
+function storefront_primary_navigation() {
+    ?>
+	<nav id="tvox-site-navigation" class="main-navigation" role="navigation" aria-label="<?php esc_html_e( 'Primary Navigation', 'storefront' ); ?>">
+	<button class="menu-toggle" aria-controls="site-navigation" aria-expanded="false"><span><?php echo esc_attr( apply_filters( 'storefront_menu_toggle_text', __( 'Menu', 'storefront' ) ) ); ?></span></button>
+		<?php
+		/*
+		wp_nav_menu(
+			array(
+				'theme_location'	=> 'primary',
+				'container_class'	=> 'primary-navigation',
+				)
+		);
+		*/
+		get_template_part('templates/tvox_pulsantiera');
+		/*wp_nav_menu(
+			array(
+				'theme_location'	=> 'handheld',
+				'container_class'	=> 'handheld-navigation',
+				)
+		);*/
+		?>
+	</nav><!-- #site-navigation -->
+	<?php
+}
+	

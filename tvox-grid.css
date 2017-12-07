@@ -1,0 +1,83 @@
+#layout-grid{
+  display:grid;
+  width: 100%;
+  grid-template-rows: 100px 3em minmax(5em, 1fr) 2em;
+  grid-template-columns: 1fr 100px 1fr fit-content(440px) 1fr;
+  background-color:  red;
+  background-repeat: repeat-x; background-position: top; background-color: rgb(255, 255, 255);
+  background-image: url('https://wpdev.sva.net/wp-content/uploads/2017/11/cropped-verde.jpg');
+}
+
+#tvox-layout-grid{
+	display:grid;
+	grid-template-areas:
+		"ssx header header ddx"	
+		"ssx gambe content ddx"
+		"ssx sx content ddx"
+		"ssx footer footer ddx";
+	grid-template-columns: 1fr 120px 5fr 1fr;
+	grid-template-rows: 142px  1fr 200px; 
+	background-repeat: repeat-x; background-position: top; background-color: rgb(255, 255, 255);
+	background-image: url('https://wpdev.sva.net/wp-content/uploads/2017/11/cropped-verde.jpg');
+}
+#masthead{grid-area: header}
+#tvox-gambe-grid-area {grid-area: gambe; background-color: inherit;}
+#content {grid-area: content}
+#tvox-sx-grid-area {grid-area: sx;  background-color: inherit;}
+#colophon {grid-area: footer}
+.col-full {margin: 0; padding: 0}
+
+#masthead > div.col-full{
+	display: grid;
+	grid-template-columns: 350px 1fr;
+	grid-template-areas: "logo pulsantiera";
+}
+#tvox-site-branding{
+	grid-area: logo;
+	padding: 0;
+	margin: 0;
+	float: none;
+	width: 350px;
+}
+#tvox-site-branding img{
+	float: left;
+}
+#tvox-site-branding a.tvox-com img{
+	margin: 45px 0 0 0;
+}
+#tvox-site-branding a{
+	display: inline;
+}
+#tvox-site-navigation{
+	grid-area: pulsantiera;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+}
+#tvox-site-navigation ul{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-content: space between;
+	margin: 20px 0;
+	width: 500px;
+	float: right;
+}   
+#tvox-site-navigation li img{
+	float: left;
+}
+
+#tvox-site-navigation li a{
+	display: inline;
+}
+#tvox-site-navigation li{
+	heigt: 40px;
+	width: 110px;
+	box-sizing: border-box;
+	margin: auto;
+	float: left;
+}
+
+
+
+

@@ -1,0 +1,119 @@
+/******  Tvox Header con pulsantiera ******/
+/*#masthead.site-header { background-repeat: repeat-x; background-position: top; background-color: rgb(255, 255, 255); padding-top: 0; border-bottom: 3px; }*/
+.site-header { background-repeat: repeat-x; background-position: top; background-color: rgb(255, 255, 255); padding-top: 0; border-bottom: 3px; }
+
+#tvox-logo-td, #tvox-pulsantiera-td {height: 182px; vertical-align: top;}
+#tvox-logo-td {width: 82px;}
+div#tvox-logo-div {float:left; width:81px;}
+div#tvox-logo1-div,  div#tvox-logo2-div {width:228px;}
+div#tvox-logo1-div {margin-top: 47px;}
+#tvox-com-td {vertical-align: top;}
+#tvox-pulsantiera-tb {width: 100%;margin-top:20px;}
+#tvox-pulsantiera-tb div.tvox-puls {width: 110px; float:right;}
+#tvox-pulsantiera-td {text-align: right;}
+#tvox-header-tb {width: 100%; border: none}
+#tvox-header-tb img{resize: none}
+#tvox-header-tb  td { border: none}
+
+/****** Breadcrump ******/
+/*
+.woocommerce-breadcrumb {
+    padding: 0.5em 20em 0.5em;
+    margin-left: -20em;
+    margin-right: 0em;
+    margin-bottom: 0;
+}
+*/
+
+
+/****** Tvox Article ******/
+/*.page-title, .post .title, .page .title {font:normal 28px/1.1em 'Oswald', arial, sans-serif;color:#222222;}
+tvox-entry-header h2 {font:normal 28px/1.1em 'Oswald', arial, sans-serif;color:#222222;}
+*/
+/****** Fine Tvox Article ******/
+
+
+
+/***** Tvox Shortcodes ******/
+b { font-weight: bold; }
+#post-author .profile-image img { border-radius: 0px; }
+div.sva-sc-factbox { display: block; font-size: 0.9em; background-color: #f8f8f8; padding: 6px;}
+div.sva-sc-factbox.right { float: right; margin-left: 8px; }
+div.sva-sc-factbox.left { float: left; margin-right: 8px; }
+div.sva-sc-factbox p { font-size: 0.9em }
+div.sva-sc-intro { font-size: 0.9em; font-style: italic;}
+
+
+/****** Customizzazioni Canvas da cancellare ?? ******/
+/*
+
+header#header { font-size: 0.9em; margin-top: 0px; margin-bottom: 0px;padding-top: 0px;padding-bottom: 0px; background-size:760px 122px;}
+.entry img, img.thumbnail { border: 0px; padding: 0px;}
+.entry .wp-caption  { background: #ffffff;border: 0px }
+.entry .wp-caption-text {font-style: italic}
+#logo {display: none;}
+
+#content.col-full { z-index: -500;}
+div#header-container { margin-bottom: -50px; background-size:760px 122px;}
+aside#sidebar-alt  { margin-top: 50px}
+.adspace-widget {resize: none;}
+
+@media only screen and (min-width: 768px) {
+#nav-container {display: none;}
+}
+@media only screen and (max-width: 767px) {
+#tvox-pulsantiera-tb {display: none;}
+}
+
+@media (min-width: 768px){}
+
+#buddydrive-custom-step-new.hide { display: inherit;}
+
+
+@media only screen and (max-width: 979px) {
+.breadcrumb {
+    margin-left: 100px;
+}
+}
+
+@media only screen and (max-width: 767px) {
+.breadcrumb {
+    margin-left: 0px;
+    margin-top: 35px;
+}
+}
+
+*/
+
+/*** Tvox altre customizzazioni Buddydrive - Widget - Archive??  ***/
+/*
+    #buddydrive-custom-step-edit.hide { display: inherit;}
+    .widget ul { list-style: none; margin-left: 0; padding-left: 0; }
+
+    div.widget>div>ul, div.widget>ul, div.widget>div>form, div.widget>form, div.widget>div>div {
+    	margin-left: 0.5em;
+	}
+	.widget li { padding-left: 1em; text-indent: -1em; }
+	.widget li:before { content: "»"; padding-right: 5px; }
+	.widget h3 {
+		margin: 0 0 0 0;
+		padding: 2px 0 1px 0;
+		text-align: center;
+		background-image: url('./includes/images/sfum.gif');
+		background-color: #7f7f7f;
+	}
+	.archive-children {
+    border-bottom: 1px solid #e6e6e6;
+    display: block;
+    float: left;
+    margin: 0 0 30px;
+    padding: 0 0 10px;
+    width: 100%;
+	}
+	.archive-children li {
+    float: left;
+    padding: 10px;
+    margin: 0 10px 0 0;
+    border: 1px solid #e6e6e6;
+	}
+*/
