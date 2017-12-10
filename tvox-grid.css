@@ -1,34 +1,49 @@
-#layout-grid{
-  display:grid;
-  width: 100%;
-  grid-template-rows: 100px 3em minmax(5em, 1fr) 2em;
-  grid-template-columns: 1fr 100px 1fr fit-content(440px) 1fr;
-  background-color:  red;
-  background-repeat: repeat-x; background-position: top; background-color: rgb(255, 255, 255);
-  background-image: url('https://wpdev.sva.net/wp-content/uploads/2017/11/cropped-verde.jpg');
-}
-
-#tvox-layout-grid{
+/* 
+ layout 3 colonne 
+ */
+#tvox-layout-grid-3 {
 	display:grid;
 	grid-template-areas:
 		"ssx header header ddx"	
 		"ssx gambe content ddx"
 		"ssx sx content ddx"
 		"ssx footer footer ddx";
-	grid-template-columns: 1fr 120px 5fr 1fr;
-	grid-template-rows: 142px  1fr 200px; 
+	grid-template-columns: 0.5fr 120px 5fr 1fr;
+	grid-template-rows: 122px  1fr 200px; 
 	background-repeat: repeat-x; background-position: top; background-color: rgb(255, 255, 255);
 	background-image: url('https://wpdev.sva.net/wp-content/uploads/2017/11/cropped-verde.jpg');
 }
-#masthead{grid-area: header}
-#tvox-gambe-grid-area {grid-area: gambe; background-color: inherit;}
-#content {grid-area: content}
-#tvox-sx-grid-area {grid-area: sx;  background-color: inherit;}
-#colophon {grid-area: footer}
-.col-full {margin: 0; padding: 0}
+#tvox-layout-grid-3 #tvox-gambe-grid-area {grid-area: gambe; background-color: inherit;}
+#tvox-layout-grid-3 #tvox-sx-grid-area {grid-area: sx;  background-color: inherit;}
+/* 
+ layout 2 colonne 
+ */
+#tvox-layout-grid-2 {
+	display:grid;
+	grid-template-areas:
+		"ssx header ddx"	
+		"ssx content ddx"
+		"ssx content ddx"
+		"footer footer footer";
+	grid-template-columns: 1fr 6f3 1fr;
+	grid-template-rows: 180px  1fr 200px; 
+	background-repeat: repeat-x; background-position: top; background-color: rgb(255, 255, 255);
+	background-image: url('https://wpdev.sva.net/wp-content/uploads/2017/11/cropped-verde.jpg');
+}
+#tvox-layout-grid-2 #tvox-gambe-grid-area { display: none; }
+#tvox-layout-grid-2 #tvox-sx-grid-area { display: none; }
 
-#masthead > div.col-full{
+#masthead{grid-area: header; padding:0;}
+#content {grid-area: content;}
+#tvox-footer-container {grid-area: footer;}
+
+
+/*
+ header grid - logo e pulsantiera
+*/
+#masthead > div.col-full-1{
 	display: grid;
+	height: 122px;
 	grid-template-columns: 350px 1fr;
 	grid-template-areas: "logo pulsantiera";
 }
@@ -77,6 +92,32 @@
 	margin: auto;
 	float: left;
 }
+/*
+footer
+*/
+#tvox-footer-grid{
+	display: grid;
+	widht: 100%;
+	background-color: rgb(243,243,243);
+	/* grid-template-areas: "sxfooter cfooter dxfooter";
+	grid-template-columns: 1fr 6fr 1fr; */
+	grid-template-areas: "sxfooter sxfooter cfooter dxfooter";
+	grid-template-columns: 0.5fr 120px 5fr 1fr;
+	grid-template-rows: 1fr;
+
+}
+#colophon {
+	grid-area: cfooter;
+}
+/*
+ sidebar destra
+*/
+
+.col-full-1{ background-color: none;}
+.col-full-2{ background-color: inherit;}
+.woocommerce-breadcrumb{ margin:1em 0 1em 0; padding:0}
+
+
 
 
 

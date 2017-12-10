@@ -3,6 +3,11 @@
 // File Security Check
 if ( ! defined( 'ABSPATH' ) ) exit;
 
+$tvox_current_child =  substr( end(explode("/",get_stylesheet_directory_uri())), 0, -6);
+$tvox_current_child = '';
+$GLOBALS['TVOX_CURRENT_CHILD'] = $tvox_current_child;
+//$tvox_current_child =  '';
+
 /*----------------------------------------------------------------------------------*/
 /* TVOX Theme setup
 /*-----------------------------------------------------------------------------------*/
@@ -23,6 +28,7 @@ function tvox_setup() {
   //add_theme_support( 'post-thumbnails' );
 	//add_image_size( 'tvox-featured-image', 2000, 1200, true );
 	//add_image_size( 'tvox-thumbnail-avatar', 100, 100, true );
+  
 }
 add_action( 'after_setup_theme', 'tvox_setup' );
 
@@ -32,41 +38,60 @@ add_action( 'after_setup_theme', 'tvox_setup' );
 //require 'inc/tvox-functions.php';
 //require 'inc/tvox-template-hooks.php';
 require 'includes/tvox-template-functions.php';
-function replace_storefront_actions() {
 
-    global $storefront;
-
-    //add_action( 'storefront_header', 'tvox_header', 10 );
-    //remove_action( 'storefront_header', 'storefront_site_branding', 40 );
-    remove_action( 'storefront_header', 'storefront_product_search', 40 );
-    remove_action( 'storefront_header', 'storefront_secondary_navigation', 30 );
-    //remove_action( 'storefront_header', 'storefront_primary_navigation', 50 );
-    remove_action( 'storefront_header', 'storefront_header_cart', 60 );
-    remove_action( 'storefront_header', 'storefront_primary_navigation_wrapper', 42 );
-    remove_action( 'storefront_header', 'storefront_primary_navigation_wrapper_close', 68 );
-    // rifaccio l'header dell'articolo single
-    remove_action( 'storefront_single_post', 'storefront_post_header', 10);
-    remove_action( 'storefront_single_post', 'storefront_post_meta', 20);
-    add_action( 'storefront_single_post', 'tvox_post_title_header', 10);
-    //remove_action( 'storefront_loop_post', 'storefront_post_meta', 20);
-    //remove_action( 'wp_enqueue_scripts', array( $storefront->main, 'child_scripts' ), 30 );
-    remove_action( 'wp_enqueue_scripts', array( $storefront->customizer, 'add_customizer_css' ), 130 );
-    //remove_action( 'wp_enqueue_scripts', array( $storefront->woocommerce, 'woocommerce_scripts' ),  20 );
-    remove_action( 'storefront_footer', 'storefront_credit',  20 );
-
+if ( $tvox_current_child == 'tvox' ) {
+    function tvox_actions_layout() {
+    
+        global $storefront;
+        
+        // header
+        //add_action( 'storefront_header', 'tvox_header', 10 );
+        //remove_action( 'storefront_header', 'storefront_site_branding', 40 );
+        remove_action( 'storefront_header', 'storefront_product_search', 40 );
+        remove_action( 'storefront_header', 'storefront_secondary_navigation', 30 );
+        //remove_action( 'storefront_header', 'storefront_primary_navigation', 50 );
+        remove_action( 'storefront_header', 'storefront_header_cart', 60 );
+        remove_action( 'storefront_header', 'storefront_primary_navigation_wrapper', 42 );
+        remove_action( 'storefront_header', 'storefront_primary_navigation_wrapper_close', 68 );
+        
+        //content
+        //remove_action( 'storefront_content_top', 'woocommerce_breadcrumb', 10 );
+        
+        // rifaccio l'header dell'articolo single
+        remove_action( 'storefront_single_post', 'storefront_post_header', 10);
+        remove_action( 'storefront_single_post', 'storefront_post_meta', 20);
+        add_action( 'storefront_single_post', 'tvox_post_title_header', 10);
+        //remove_action( 'storefront_loop_post', 'storefront_post_meta', 20);
+        
+        // cambio il caricamento dei css
+        //remove_action( 'wp_enqueue_scripts', array( $storefront->main, 'child_scripts' ), 30 );
+        remove_action( 'wp_enqueue_scripts', array( $storefront->customizer, 'add_customizer_css' ), 130 );
+        //remove_action( 'wp_enqueue_scripts', array( $storefront->woocommerce, 'woocommerce_scripts' ),  20 );
+        //remove_action( 'storefront_footer', 'storefront_credit',  20 );
+        
+        add_action( 'storefront_before_header', 'tvox_open_grid_container', 10 );
+        add_action( 'storefront_before_footer', 'tvox_close_grid_container' , 10);
+        add_action( 'storefront_before_footer', 'tvox_open_footer_grid_container', 20 );
+        add_action( 'storefront_after_footer', 'tvox_close_footer_grid_container', 10 );
+        add_action( 'storefront_before_content', 'tvox_sx_grid_area', 10 );
+        
+    
+    }
+    add_action( 'init', 'tvox_actions_layout' );
+    
+    function tvox_child_scripts() {
+        wp_enqueue_style( 'tvox-layout', get_stylesheet_directory_uri(). '/tvox-grid.css' );
+        wp_enqueue_script( 'tvox', get_stylesheet_directory_uri(). '/includes/js/tvox.js', array('jquery'));
+    }
+    add_action( 'wp_enqueue_scripts', 'tvox_child_scripts', 1000 );
 }
-add_action( 'init', 'replace_storefront_actions' );
 
-function tvox_open_grid_container() {
-    ?>
-    <div id="tvox-layout-grid">
-	<?php
-}
-add_action( 'storefront_before_header', 'tvox_open_grid_container' );
+
+
 
 
 /*-----------------------------------------------------------------------------------*/
-/* Tvox Shorcodes
+/* Tvox Shorcodes - da rivedere
 /*-----------------------------------------------------------------------------------*/
 
 /*
@@ -111,6 +136,11 @@ add_shortcode( 'intro', 'sva_shortcode_intro' );
 
 
 /*-----------------------------------------------------------------------------------*/
+/* VECCHIO DA ELIMINARE !!!?????
+ /*-----------------------------------------------------------------------------------*/
+
+
+/*-----------------------------------------------------------------------------------*/
 /* Header TVOX
 /*-----------------------------------------------------------------------------------*/
 
@@ -118,6 +148,7 @@ add_action( 'storefront_header_before', 'tvox_header_table' );
 function tvox_header_table(){
 	get_template_part('templates/tvox_header_table');
 }
+
 
 
 
@@ -175,11 +206,7 @@ function woo_custom_deregister_bbpress_template_stack ( $stack ) {
 /* Tvox Sripts and styles */
 /*------------------------------------------------------------------------------------*/
 
-function tvox_child_scripts() {
-  wp_enqueue_style( 'tvox-layout', get_stylesheet_directory_uri(). '/tvox-grid.css' );
-	wp_enqueue_script( 'tvox', get_stylesheet_directory_uri(). '/includes/js/tvox.js', array('jquery'));
-}
-add_action( 'wp_enqueue_scripts', 'tvox_child_scripts', 1000 );
+
 /*-----------------------------------------------------------------------------------*/
 /**
  * sva_archive_children()
