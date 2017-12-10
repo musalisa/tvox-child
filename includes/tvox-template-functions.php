@@ -146,11 +146,11 @@ function tvox_sx_grid_area() {
 }
 
 if ( $tvox_current_child == 'tvox') {
-    
     function storefront_site_branding() {
         ?>
     	<div id="tvox-site-branding">
-    		<?php storefront_site_title_or_logo(); ?>
+    		<?php //storefront_site_title_or_logo(); ?>
+    		<a href="https://wpdev.sva.net/" class="custom-logo-link" rel="home" itemprop="url"><img src="/wp-content/themes/tvox-child/includes/images/theremin.png" class="custom-logo" alt="WP dev 1" itemprop="logo" width="81" height="182"></a>
     		<a href="https://wpdev.sva.net/" class="tvox-com" rel="home" itemprop="url"><img src="/wp-content/themes/tvox-child/includes/images/thereminvox_com.gif"></a>
     		<a href="https://wpdev.sva.net/" class="tvox-claim" rel="home" itemprop="url"><img src="/wp-content/themes/tvox-child/includes/images/claim.gif"></a>
     	</div>
@@ -161,7 +161,7 @@ if ( $tvox_current_child == 'tvox') {
         ?>
     	<nav id="tvox-site-navigation" class="main-navigation" role="navigation" aria-label="<?php esc_html_e( 'Primary Navigation', 'storefront' ); ?>">
     	<button class="menu-toggle" aria-controls="site-navigation" aria-expanded="false"><span><?php echo esc_attr( apply_filters( 'storefront_menu_toggle_text', __( 'Menu', 'storefront' ) ) ); ?></span></button>
-    		<?php
+    		<?php     
     		/*
     		wp_nav_menu(
     			array(
