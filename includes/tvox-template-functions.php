@@ -1,8 +1,8 @@
 <?php
 /*
- * articolo
+ * 
  */
-function tvox_post_title_header() {
+function tvox_single_post_header() {
 	?>
 	<header class="entry-header">
 	<?php
@@ -17,65 +17,29 @@ function tvox_post_title_header() {
 		the_title( sprintf( '<h2 class="alpha entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' );
 	}
 	?>
-	</header><!-- .entry-header -->
-	<?php
-    ?>
-	<aside class="entry-meta">
-		<?php if ( 'post' == get_post_type() ) : // Hide category and tag text for pages on Search.
-
-		?>
-		<div class="author">
-			<?php
-				//echo get_avatar( get_the_author_meta( 'ID' ), 128 );
-				echo '<div class="label">' . esc_attr( __( 'by', 'storefront' ) ) . '</div>';
-				the_author_posts_link();
-			?>
-		</div>
-		<?php
-		/* translators: used between list items, there is a space after the comma */
-		
-		$categories_list = get_the_category_list( __( ', ', 'storefront' ) );
-
-		if ( $categories_list ) : ?>
-			<div class="cat-links">
-				<?php
-				echo '<div class="label">' . esc_attr( __( 'in', 'storefront' ) ) . '</div>';
-				echo wp_kses_post( $categories_list );
-				?>
-			</div>
-		<?php endif; // End if categories. ?>
-
-		<?php
-		/* translators: used between list items, there is a space after the comma */
-		$tags_list = get_the_tag_list( '', __( ', ', 'storefront' ) );
-
-		if ( $tags_list ) : ?>
-			<div class="tags-links">
-				<?php
-				echo '<div class="label">' . esc_attr( __( 'Tagged', 'storefront' ) ) . '</div>';
-				echo wp_kses_post( $tags_list );
-				?>
-			</div>
-		<?php endif; // End if $tags_list. ?>
-
-	<?php endif; // End if 'post' == get_post_type(). ?>
-
-		<?php if ( ! post_password_required() && ( comments_open() || '0' != get_comments_number() ) ) : ?>
-			<div class="comments-link">
-				<?php echo '<div class="label">' . esc_attr( __( 'Comments', 'storefront' ) ) . '</div>'; ?>
-				<span class="comments-link"><?php comments_popup_link( __( 'Leave a comment', 'storefront' ), __( '1 Comment', 'storefront' ), __( '% Comments', 'storefront' ) ); ?></span>
-			</div>
-		<?php endif; ?>
-	</aside>
+    	<span>
+    		<?php
+    			//echo get_avatar( get_the_author_meta( 'ID' ), 128 );
+    			echo '<span>' . esc_attr( __( 'by', 'storefront' ) ) . ' </span>';
+    			the_author_posts_link();
+    		?>
+    	</span>
 	<?php
 	tvox_posted_on();
+	$categories_list = get_the_category_list( __( ', ', 'storefront' ) );
+	if ( $categories_list ) : ?>
+    	<span>
+    		<?php
+    		echo '<span class="label">' . esc_attr( __( 'in', 'storefront' ) ) . ' </span>';
+    		echo wp_kses_post( $categories_list );
+    		?>
+    	</span>
+			<?php endif; // End if categories. ?> 
+	</header><!-- .entry-header -->
+	<?php
+	
 }
 
-
-
-/**
- * Prints HTML with meta information for the current post-date/time and author.
- */
 function tvox_posted_on() {
     $time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
     if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
@@ -90,7 +54,7 @@ function tvox_posted_on() {
         );
     
     $posted_on = sprintf(
-        _x( 'Posted on %s', 'post date', 'storefront' ),
+        _x( 'on %s', 'post date', 'storefront' ),
         '<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
         );
     
@@ -112,7 +76,7 @@ function tvox_posted_on() {
 
 
 /*
- * layout
+ * layout - tvox template functions
  */
 function tvox_open_grid_container() {
 	    ?>
@@ -145,7 +109,11 @@ function tvox_sx_grid_area() {
 	<?php
 }
 
-if ( $tvox_current_child == 'tvox') {
+/*
+ * layout - storefront override template functions
+ */
+if ( $tvox_child_layout == 'tvox_layout') {
+    
     function storefront_site_branding() {
         ?>
     	<div id="tvox-site-branding">

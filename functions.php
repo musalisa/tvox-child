@@ -4,8 +4,12 @@
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 $tvox_current_child =  substr( end(explode("/",get_stylesheet_directory_uri())), 0, -6);
-$tvox_current_child = '';
+//$tvox_current_child = '';
+//$tvox_child_layout = $tvox_current_child . '_layout';
+$tvox_child_blog = $tvox_current_child . '_blog';
 $GLOBALS['TVOX_CURRENT_CHILD'] = $tvox_current_child;
+$GLOBALS['TVOX_CHILD_LAYOUT'] = $tvox_child_layout;
+$GLOBALS['TVOX_CHILD_BLOG'] = $tvox_child_blog;
 //$tvox_current_child =  '';
 
 /*----------------------------------------------------------------------------------*/
@@ -39,7 +43,8 @@ add_action( 'after_setup_theme', 'tvox_setup' );
 //require 'inc/tvox-template-hooks.php';
 require 'includes/tvox-template-functions.php';
 
-if ( $tvox_current_child == 'tvox' ) {
+if ( $tvox_child_layout == 'tvox_layout' ) {
+    
     function tvox_actions_layout() {
     
         global $storefront;
@@ -57,11 +62,6 @@ if ( $tvox_current_child == 'tvox' ) {
         //content
         //remove_action( 'storefront_content_top', 'woocommerce_breadcrumb', 10 );
         
-        // rifaccio l'header dell'articolo single
-        remove_action( 'storefront_single_post', 'storefront_post_header', 10);
-        remove_action( 'storefront_single_post', 'storefront_post_meta', 20);
-        add_action( 'storefront_single_post', 'tvox_post_title_header', 10);
-        //remove_action( 'storefront_loop_post', 'storefront_post_meta', 20);
         
         // cambio il caricamento dei css
         //remove_action( 'wp_enqueue_scripts', array( $storefront->main, 'child_scripts' ), 30 );
@@ -78,17 +78,41 @@ if ( $tvox_current_child == 'tvox' ) {
     
     }
     add_action( 'init', 'tvox_actions_layout' );
-    
-    function tvox_child_scripts() {
+       
+    function tvox_scripts_layout() {
         wp_enqueue_style( 'tvox-layout', get_stylesheet_directory_uri(). '/tvox-grid.css' );
         wp_enqueue_script( 'tvox', get_stylesheet_directory_uri(). '/includes/js/tvox.js', array('jquery'));
     }
-    add_action( 'wp_enqueue_scripts', 'tvox_child_scripts', 1000 );
+    add_action( 'wp_enqueue_scripts', 'tvox_scripts_layout', 1000 );
 }
 
-
-
-
+if ( $tvox_child_blog == 'tvox_blog' ) {
+    
+    function tvox_actions_single_post() {
+        
+        global $storefront;
+        
+        // post single
+        remove_action( 'storefront_single_post', 'storefront_post_header', 10);
+        add_action( 'storefront_single_post', 'tvox_single_post_header', 10);
+        remove_action( 'storefront_single_post', 'storefront_post_meta', 20);
+        //remove_action( 'storefront_single_post', 'storefront_post_content', 30);
+        remove_action( 'storefront_post_content_before', 'storefront_post_thumbnail', 10);
+        
+        //add_action( 'storefront_single_post', 'tvox_post_content', 30);
+        add_action( 'storefront_single_post', 'storefront_post_meta', 40);
+        
+        //loop
+        //remove_action( 'storefront_loop_post', 'storefront_post_meta', 20);
+        
+    }
+    add_action( 'init', 'tvox_actions_single_post' );
+    
+    function tvox_scripts_blog() {
+        wp_enqueue_style( 'tvox-layout', get_stylesheet_directory_uri(). '/tvox-blog.css' );
+    }
+    add_action( 'wp_enqueue_scripts', 'tvox_scripts_blog', 1100 );
+}
 
 /*-----------------------------------------------------------------------------------*/
 /* Tvox Shorcodes - da rivedere
