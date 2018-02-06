@@ -74,6 +74,43 @@ function tvox_posted_on() {
     ) );
 }
 
+function tvox_post_content() {
+    ?>
+		<div class="entry-content">
+		<?php
+
+		/**
+		 * Functions hooked in to storefront_post_content_before action.
+		 *
+		 * @hooked storefront_post_thumbnail - 10
+		 */
+		do_action( 'storefront_post_content_before' );
+		//if ( 'content' == $settings['post_content'] || is_single() ) { the_content( __( 'Continue Reading &rarr;', 'woothemes' ) ); } else { the_excerpt(); }
+		
+    	if ( is_single() )
+    		{ the_content(
+    			sprintf(
+    				__( 'Continue reading %s', 'storefront' ),
+    				'<span class="screen-reader-text">' . get_the_title() . '</span>'
+    			)
+    		); }
+    	else 	
+    	{ the_excerpt();
+    	echo ('<a class="moretag" href="'. get_permalink($post->ID) . '"> '. __( 'Continue reading', 'storefront' ) .'</a>');
+    	
+    	}
+ 
+		do_action( 'storefront_post_content_after' );
+		if ( is_single() )
+		{ wp_link_pages( array(
+			'before' => '<div class="page-links">' . __( 'Pages:', 'storefront' ),
+			'after'  => '</div>',
+		) );
+		}
+		?>
+		</div><!-- .entry-content -->
+		<?php
+	}
 
 /*
  * layout - tvox template functions

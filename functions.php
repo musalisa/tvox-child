@@ -65,9 +65,13 @@ if ( $tvox_child_layout == 'tvox_layout' ) {
         
         // cambio il caricamento dei css
         //remove_action( 'wp_enqueue_scripts', array( $storefront->main, 'child_scripts' ), 30 );
-        remove_action( 'wp_enqueue_scripts', array( $storefront->customizer, 'add_customizer_css' ), 130 );
         //remove_action( 'wp_enqueue_scripts', array( $storefront->woocommerce, 'woocommerce_scripts' ),  20 );
+        
         //remove_action( 'storefront_footer', 'storefront_credit',  20 );
+        
+        // abilito disabilito il caricamento dei css del customizer
+        //remove_action( 'wp_enqueue_scripts', array( $storefront->customizer, 'add_customizer_css' ), 130 );
+        
         
         add_action( 'storefront_before_header', 'tvox_open_grid_container', 10 );
         add_action( 'storefront_before_footer', 'tvox_close_grid_container' , 10);
@@ -103,7 +107,12 @@ if ( $tvox_child_blog == 'tvox_blog' ) {
         add_action( 'storefront_single_post', 'storefront_post_meta', 40);
         
         //loop
-        //remove_action( 'storefront_loop_post', 'storefront_post_meta', 20);
+        remove_action( 'storefront_loop_post', 'storefront_post_header', 10);
+        add_action( 'storefront_loop_post', 'tvox_single_post_header', 10);
+        remove_action( 'storefront_loop_post', 'storefront_post_meta', 20);
+        //add_action( 'storefront_loop_post', 'storefront_post_thumbnail', 20);
+        remove_action( 'storefront_loop_post', 'storefront_post_content', 30);
+        add_action( 'storefront_loop_post', 'tvox_post_content', 30);
         
     }
     add_action( 'init', 'tvox_actions_single_post' );
@@ -112,6 +121,15 @@ if ( $tvox_child_blog == 'tvox_blog' ) {
         wp_enqueue_style( 'tvox-layout', get_stylesheet_directory_uri(). '/tvox-blog.css' );
     }
     add_action( 'wp_enqueue_scripts', 'tvox_scripts_blog', 1100 );
+    
+    
+    function new_excerpt_more($more) {
+        global $post;
+        //return '<a class="moretag" href="'. get_permalink($post->ID) . '"> Read the full article...</a>';
+        return '';
+    }
+    add_filter('excerpt_more', 'new_excerpt_more', 20);
+    //add_filter('get_the_excerpt', 'new_excerpt_more', 20);
 }
 
 /*-----------------------------------------------------------------------------------*/
